@@ -1,0 +1,31 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+on:
+  push:
+    branches: master
+  pull_request:
+    branches: master
+
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Test Success
+      run: echo "Test success"
+    
+    - name: Git clone
+      uses: actions/checkout@v1
+      
+    - name: Show folder files
+      run: ls -la
+  
+  build:
+    runs-on: ubuntu-latest
+    needs: [test]
+    steps:
+    - name: Build Success
+      run: echo "Build Success"
